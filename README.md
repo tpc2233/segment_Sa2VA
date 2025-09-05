@@ -17,7 +17,7 @@
 
 ## News
 
-- [x] Pixel-SAIL and Qwen-VL like models will be related before the end of July!!
+- [ ] Pixel-SAIL and Qwen-VL-like models will be released in the following month. Please stay tuned.
 
 - [x] Check out our recent works on pixel-LLM using one transformer, Pixel-SAIL[arxiv](https://arxiv.org/abs/2504.10465).
 
