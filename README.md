@@ -9,26 +9,12 @@
 
 <sup>1</sup>UC Merced&emsp;&emsp;&emsp;&emsp;<sup>2</sup>ByteDance Seed&emsp;&emsp;&emsp;&emsp;<sup>3</sup>WHU&emsp;&emsp;&emsp;&emsp;<sup>4</sup>PKU
 
-&dagger; project lead&emsp;* The first three authors equally contribute to the work.
+&dagger; project lead&emsp;* the first three authors equally contribute to the work.
 
 ![Teaser](assets/images/teaser.jpg)
 
-
-
-## News
-
-- [ ] Pixel-SAIL and Qwen-VL-like models will be released in the following month. Please stay tuned.
-
-- [x] Check out our recent works on pixel-LLM using one transformer, Pixel-SAIL[arxiv](https://arxiv.org/abs/2504.10465).
-
-- [x] Sa2VA serves as the first and third solutions for 4th PVUW Workshop@CVPR 2025! [the first solution report](https://arxiv.org/pdf/2504.05178), [the third solution report](https://arxiv.org/abs/2504.00476).
-      
-- [x] We plan to release the Qwen-VL-based Sa2VA model for the next version! Please stay tuned!
-
-
 ## Opensource progress
 
-- [ ] Release Pixel-SAIL models and code. (To be done)
 - [ ] Release Qwen-VL related models. (To be done)
 - [x] Release Open-sourced training datasets.
 - [x] Release Ref-SAM-v dataset.
@@ -58,7 +44,7 @@ We provide the following models:
 
 ## 🤗 Gradio Demos
 
-We provide a script that implements interactive chat using gradio, which requires installing `gradio==4.42.0`. You can try it to build a local chat interface quickly.
+We provide a script that implements interactive chat using gradio, which requires installing `gradio`. You can try it to build a local chat interface quickly.
 ```shell
 PYTHONPATH=. python projects/llava_sam2/gradio/app.py ByteDance/Sa2VA-4B
 ```
@@ -73,8 +59,7 @@ Our Sa2VA model is available on 🤗HuggingFace. With very few steps, you can tr
 Supposing you have a folder (`PATH_TO_FOLDER`) that contains images of a video, you can use the following script to chat with the Sa2VA model or segment the objects in the videos.
 
 ```bash
-> cd scripts
-> python demo/demo.py PATH_TO_FOLDER --model_path ByteDance/Sa2VA-8B --work-dir OUTPUT_DIR --text "<image>Please describe the video content."
+python demo/demo.py PATH_TO_FOLDER --model_path ByteDance/Sa2VA-8B --work-dir OUTPUT_DIR --text "<image>Please describe the video content."
 ```
 
 If the output contains the segmentation results, the results will be saved to `OUTPUT_DIR`.
@@ -139,27 +124,43 @@ Answer: "The scene has a dark and mysterious atmosphere, with the men dressed in
 <details open>
 <summary>Installation</summary>
 
+We provide two ways for installation. Using `uv` is recommended for a faster and more reliable setup.
+
+**Option 1: Using `uv` (Recommended)**
+
+First, install `uv`:
+```bash
+pip install uv
+```
+Then, create a virtual environment and sync the dependencies:
+```bash
+uv venv
+uv sync
+source .venv/bin/activate
+```
+
+**Option 2: Using `conda` and `pip`**
+
 1. Please install the python and pytorch first:
 ```bash
-> conda create -n vlm python=3.10
-> conda activate vlm
-> conda install pytorch==2.3.1 torchvision==0.18.1 pytorch-cuda=12.1 cuda -c pytorch  -c "nvidia/label/cuda-12.1.0" -c "nvidia/label/cuda-12.1.1"
+conda create -n vlm python=3.10
+conda activate vlm
+conda install pytorch==2.3.1 torchvision==0.18.1 pytorch-cuda=12.1 cuda -c pytorch  -c "nvidia/label/cuda-12.1.0" -c "nvidia/label/cuda-12.1.1"
 ```
 
 2. Install mmcv, we use 2.1.0 as default version:
 ```bash
-> pip install mmcv==2.1.0 -f https://download.openmmlab.com/mmcv/dist/cu121/torch2.3/index.html
+pip install mmcv==2.1.0 -f https://download.openmmlab.com/mmcv/dist/cu121/torch2.3/index.html
 ```
 
 3. Install other dependencies:
 ```bash
-> pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 </details>
 
 Please make sure using the correct versions of transformers and peft.
 
-<
 <summary>Pretrained Model Preparation</summary>
 
 You are expected to download the following pretrained models and place them in the `./pretrained` directory:
@@ -184,7 +185,7 @@ Please download the training datasets and place them in the `data` directory. Th
 
 Please directly put the zip files into the `data` directory and unzip them. For example, you can download the `video_datas_mevis.zip` and unzip it in the `data` directory like:
 ```bash
-> unzip video_datas_mevis.zip
+unzip video_datas_mevis.zip
 ```
 
 The final data structure should be like:
@@ -223,7 +224,7 @@ data/
 
 Please run the following script to train using 8 GPUS, we suggest using at least 8 A100 GPUs:
 ```bash
-> bash tools/dist.sh train projects/llava_sam2/configs/sa2va_4b.py 8
+bash tools/dist.sh train projects/llava_sam2/configs/sa2va_4b.py 8
 ```
 </details>
 
@@ -232,21 +233,28 @@ Please run the following script to train using 8 GPUS, we suggest using at least
 
 Please run the following script to convert:
 ```bash
-> python projects/llava_sam2/hf/convert_to_hf.py projects/llava_sam2/configs/sa2va_4b.py --pth-model PATH_TO_PTH_MODEL --save-path PATH_TO_SAVE_FOLDER
+python projects/llava_sam2/hf/convert_to_hf.py projects/llava_sam2/configs/sa2va_4b.py --pth-model PATH_TO_PTH_MODEL --save-path PATH_TO_SAVE_FOLDER
 ```
 </details>
+
+
+<details open>
+<summary>Test Script</summary>
+
+Please adopt the following script to test Sa2VA using 8 GPUS.
+
+
+```bash
+./projects/llava_sam2/evaluation/dist_test.sh projects/llava_sam2/evaluation/ref_vos_eval.py path-to-hf-model 8 --work-dir path-to-output
+```
+
+
+
 
 
 ## References
 If you find this repository useful, please consider referring to the following paper:
 ```
-@article{pixel_sail,
-  title={Pixel-SAIL: Single Transformer For Pixel-Grounded Understanding},
-  author={Zhang, Tao and Li, Xiangtai and Huang, Zilong  and Li, Yanwei and Lei, Weixian and Deng, Xueqing and Chen, Shihao and Ji, Shunping and  and Feng, Jiashi},
-  journal={arXiv},
-  year={2025}
-}
-
 @article{sa2va,
   title={Sa2VA: Marrying SAM2 with LLaVA for Dense Grounded Understanding of Images and Videos},
   author={Yuan, Haobo and Li, Xiangtai and Zhang, Tao and Huang, Zilong and Xu, Shilin and Ji, Shunping and Tong, Yunhai and Qi, Lu and Feng, Jiashi and Yang, Ming-Hsuan},
