@@ -18,6 +18,12 @@ dependencies = [
     "torch>=2.4.0",
     "transformers==4.49.0",
     "xtuner[deepspeed]==0.1.23",
+    "validators",
+    "xlsxwriter",
+    "tabulate",
+    "sty",
+    "portalocker",
+    "moviepy==1.0.3",
 ]
 
 [tool.uv.sources]
