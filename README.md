@@ -237,16 +237,35 @@ python projects/llava_sam2/hf/convert_to_hf.py projects/llava_sam2/configs/sa2va
 ```
 </details>
 
+## Evaluation
 
 <details open>
-<summary>Test Script</summary>
+<summary>Image/Video Referring Segmentation Evaluation</summary>
 
-Please adopt the following script to test Sa2VA using 8 GPUS.
+Please adopt the following script to test Sa2VA on video object segmentation benchmarks using 8 GPUS.
 
 
 ```bash
 ./projects/llava_sam2/evaluation/dist_test.sh projects/llava_sam2/evaluation/ref_vos_eval.py path-to-hf-model 8 --work-dir path-to-output
 ```
+
+</details>
+
+<details open>
+<summary>Image/Video QA Evaluation</summary>
+
+We use [sa2va_eval](https://github.com/zhang-tao-whu/sa2va_eval) (a modified version of [VLMEvalKit](https://github.com/open-compass/VLMEvalKit)) for Image/Video Chat benchmark evaluation.
+
+**Single-GPU Evaluation Example:**
+```bash
+python run.py --data MMBench_DEV_EN MME SEEDBench_IMG --model Sa2VA-1B --verbose
+```
+
+**Multi-GPU Evaluation Example:**
+```bash
+torchrun --nproc-per-node=8 run.py --data MMBench_DEV_EN SEEDBench_IMG MMStar AI2D_TEST MMMU_DEV_VAL ScienceQA_TEST --model Sa2VA-4B Sa2VA-8B --verbose
+```
+</details>
 
 
 
