@@ -68,7 +68,7 @@ if __name__ == '__main__':
     exp_dict             = json.load(open(args.exp_path))['videos']
     mask_dict            = json.load(open(args.mask_path))
     mask_dict_foreground = json.load(open(args.foreground_mask_path))
-
+    #mask_dict_foreground=mask_dict
     mask_pred = json.load(open(args.pred_path))
 
     shared_exp_dict             = mp.Manager().dict(exp_dict)
