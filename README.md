@@ -76,6 +76,10 @@ Prompt:
 Can you please segment purple toy in the given image
 ![purple-64ad180f22b3c8](https://github.com/user-attachments/assets/20dcf358-c009-4ae1-af77-ba1690af69bb)
 
+Prompt: 
+Can you please segment main person in the given image
+![man-6908e430400799](https://github.com/user-attachments/assets/38d4dca3-3961-4c17-ab74-db391db4df54)
+
 
 
 
