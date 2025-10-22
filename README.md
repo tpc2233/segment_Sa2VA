@@ -47,6 +47,7 @@ python models_download.py 26B
 ## 🤗 Quick Start
 
 Using `gradio`. You can try it to build a local chat interface quickly.
+
 Low VRAM GPU
 ```shell
 PYTHONPATH=. python projects/sa2va/gradio/app2.py models_downloads/Sa2VA-4B
