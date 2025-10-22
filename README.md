@@ -13,8 +13,8 @@
 ## Installation
 
 
-### Dependencies for Nvidia Blackwell cards
-Tested on CUDA 12.8 | Blackwell GPU
+### Dependencies for CUDA 12.8  
+Tested on Nvidia Blackwell cards
 ```bash
 git clone https://github.com/bytedance/segment_Sa2VA.git
 cd segment_Sa2VA
@@ -25,9 +25,10 @@ pip install -r requirements_blackwell.txt
 pip install flash-attn --no-build-isolation
 ```
 
-## 🤗 Models Download
+## Models Download
 
 Automatic download models by running codes for
+
 Low VRAM GPU
 ```shell
 python models_download.py 4B
@@ -55,18 +56,6 @@ High VRAM GPU
 PYTHONPATH=. python projects/sa2va/gradio/app3.py models_downloads/Sa2VA-26B
 ```
 
-
-
-**Single-GPU Evaluation Example:**
-```bash
-python run.py --data MMBench_DEV_EN MME SEEDBench_IMG --model Sa2VA-1B --verbose
-```
-
-**Multi-GPU Evaluation Example:**
-```bash
-torchrun --nproc-per-node=8 run.py --data MMBench_DEV_EN SEEDBench_IMG MMStar AI2D_TEST MMMU_DEV_VAL ScienceQA_TEST --model Sa2VA-4B Sa2VA-8B --verbose
-```
-</details>
 
 
 
