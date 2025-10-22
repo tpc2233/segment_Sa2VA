@@ -29,15 +29,15 @@ pip install flash-attn --no-build-isolation
 
 Automatic download models by running codes for
 
-Low VRAM GPU
+Low VRAM GPU 12+
 ```shell
 python models_download.py 4B
 ```
-Mid VRAM GPU
+Mid VRAM GPU 24+
 ```shell
 python models_download.py 8B
 ```
-High VRAM GPU
+High VRAM GPU 80+
 ```shell
 python models_download.py 26B
 ```
