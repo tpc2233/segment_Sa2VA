@@ -81,5 +81,16 @@ Can you please segment main person in the given image
 ![man-6908e430400799](https://github.com/user-attachments/assets/38d4dca3-3961-4c17-ab74-db391db4df54)
 
 
+### VIT refine built-in
+VIT button for integration usage 
+
+![vit1](https://github.com/user-attachments/assets/a1d20a0f-2662-4547-b29f-629b022bc7c5)
+
+VIT Tab UI
+![vit_tab](https://github.com/user-attachments/assets/8e25eff4-45f0-487a-86a8-26f5660c8306)
+
+
+
+
 
 
