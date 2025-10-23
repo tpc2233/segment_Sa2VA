@@ -65,8 +65,6 @@ Prompt:
 Can you please segment cheetah in the given image
 ![cheetah-618a266c098a05](https://github.com/user-attachments/assets/c6969ee7-5ab2-4c53-a77b-3f746f6b365f)
 
-![cheetah](https://github.com/user-attachments/assets/80fc991f-0144-4c39-ba9b-28a0b9b092ea)
-
 Prompt: 
 Can you please segment pink toy in the given image
 
