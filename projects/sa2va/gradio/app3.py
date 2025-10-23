@@ -220,7 +220,7 @@ if __name__ == "__main__":
     print("All models loaded.")
 
     with gr.Blocks(theme=gr.themes.Soft(), title="Sa2VA + ViT-Matte") as demo:
-        gr.Markdown(f"<h1 style='text-align: center;'>Sa2VA and ViT-Matte Demo</h1>"); gr.Markdown(description)
+        gr.Markdown(f"<h1 style='text-align: center;'>Segmentation Sa2VA and ViT-Matte</h1>"); gr.Markdown(description)
 
         shared_image_state, shared_mask_state = gr.State(), gr.State()
         shared_video_path_state, shared_mask_video_path_state = gr.State(), gr.State()
